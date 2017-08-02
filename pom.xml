@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>buildDeploy</groupId>
     <artifactId>buildDeploy</artifactId>
-    <version>1.0</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>buildDeploy</name>
     <url>http://maven.apache.org</url>
@@ -14,8 +14,8 @@
         <developerConnection>
             scm:git:git@github.com:apatharraj/sampleMaven.git
         </developerConnection>
-        <url>https://github.com/apatharraj/sampleMaven</url>
-        <tag>1.0</tag>
+        <url>https://github.com/apatharraj/sampleMaven.git</url>
+        <tag>buildDeploy-1.0</tag>
     </scm>
     <distributionManagement>
         <repository>
@@ -31,7 +31,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-release-plugin</artifactId>
-                <version>2.3.2</version>
+                <version>2.4.1</version>
                 <configuration>
                     <useReleaseProfile>false</useReleaseProfile>
                     <releaseProfiles>release</releaseProfiles>
@@ -40,30 +40,15 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-ear-plugin</artifactId>
-                <configuration>
-                    <modules>
-                        <jarModule>
-                            <groupId>test.xyzcm.portal.dsa</groupId>
-                            <artifactId>dsa-entity</artifactId>
-                            <bundleDir>lib</bundleDir>
-                        </jarModule>
-                    </modules>
-                    <filtering>true</filtering>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
-                <version>2.5.3</version>
-                <configuration>
-                    <completionGoals>promote:artifacts deploy:deploy</completionGoals>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>se.jiderhamn</groupId>
-                <artifactId>promote-maven-plugin</artifactId>
-                <version>1.0.2</version>
+                <version>2.5.1</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.shared</groupId>
+                        <artifactId>maven-invoker</artifactId>
+                        <version>2.2</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
